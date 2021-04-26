@@ -6,12 +6,18 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './home-template/header/header.component';
 import { HomeTemplateComponent } from './home-template/home-template.component';
 import { RouterModule } from '@angular/router';
+import { DetailComponent } from './detail/detail.component';
+//lấy dữ liệu input từ người dùng => impor @angular/form
+import {FormsModule} from '@angular/forms';
 //Cấu hình route cho Homemodule
 
 const HomeRoute = [
   {path:'',component:HomeTemplateComponent,children:[
     {path:'homepage',component:HomePageComponent},
-    {path:'',component:HomePageComponent}
+    {path:'',component:HomePageComponent},
+    {path:'detail/:id',component:DetailComponent},
+    {path:'login',component:LoginComponent},
+    {path:'register',component:RegisterComponent}
   ]}
 ]
 
@@ -22,10 +28,11 @@ const HomeRoute = [
     LoginComponent,
     RegisterComponent,
     HomeTemplateComponent,
-    HeaderComponent
+    HeaderComponent,
+    DetailComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(HomeRoute)
+    CommonModule,RouterModule.forChild(HomeRoute),FormsModule
   ],
   exports:[HeaderComponent]
 })
